@@ -18,7 +18,6 @@
         <selenium-java.version>4.13.0</selenium-java.version>
         <log4j-core.version>2.17.1</log4j-core.version>
         <log4j-slf4j2-impl.version>2.20.0</log4j-slf4j2-impl.version>
-        <assertj-core.version>3.24.2</assertj-core.version>
 
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
@@ -53,11 +52,6 @@
             <artifactId>log4j-slf4j2-impl</artifactId>
             <version>${log4j-slf4j2-impl.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
         </dependency>
     </dependencies>
 

@@ -15,21 +15,11 @@ public class HeaderContainerComponent extends AbsPageObject {
     @FindBy(xpath = "//div[./nav]")
     private WebElement headerContainer;
 
-    public void useLoginButton () {
-        WebElement loginButton = headerContainer.findElement(By.xpath(".//button[contains(text(),'Войти')]"));
-        loginButton.click();
-    }
+    public void goToEventsCalendar() {
+//        standardWaiters.waitForElementVisible(By.cssSelector(education));
+        moveToElement(headerContainer.findElement(By.cssSelector("span[title='Обучение']")));
 
-    public void goToPersonalPage() {
-
-        String headNameSelector = ".sc-199a3eq-0.fJMWHf";
-        standardWaiters.waitForElementVisible(By.cssSelector(headNameSelector));
-        WebElement headName = $(By.cssSelector(headNameSelector));
-        moveToElement(headName);
-
-        String myProfileLocator = "//a[contains(text(), 'Мой профиль')]";
-        standardWaiters.waitForElementVisible(By.xpath(myProfileLocator));
-        WebElement dropDownMyProfile = $(By.xpath(myProfileLocator));
-        moveAndClick(dropDownMyProfile);
+        WebElement eventsCalendar = $(By.xpath("//a[contains(text(),'Календарь мероприятий')]"));
+        moveAndClick(eventsCalendar);
     }
 }

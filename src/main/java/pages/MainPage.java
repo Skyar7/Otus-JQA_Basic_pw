@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class MainPage extends AbsBasePage {
@@ -11,5 +12,9 @@ public class MainPage extends AbsBasePage {
 
     public String getPagePath() {
         return pagePath;
+    }
+
+    public void goToQACourses() {
+        $(By.xpath("(//div[@class='sc-yfk21i-0 jeFZmS'][contains(text(),'Тестирование')])[1]")).click();
     }
 }
