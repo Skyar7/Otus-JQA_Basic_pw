@@ -16,8 +16,15 @@ public class HeaderContainerComponent extends AbsPageObject {
     private WebElement headerContainer;
 
     public void goToEventsCalendar() {
-//        standardWaiters.waitForElementVisible(By.cssSelector(education));
-        moveToElement(headerContainer.findElement(By.cssSelector("span[title='Обучение']")));
+//        String educationSelector = "span[title='Обучение']";
+
+        WebElement education = headerContainer.findElement(By.cssSelector("span[title='Обучение']"));
+
+//        standardWaiters.waitForElementVisible(headerContainer.findElement(By.cssSelector(educationSelector)));
+//        moveToElement(headerContainer.findElement(By.cssSelector(educationSelector)));
+
+        standardWaiters.waitForElementVisible(education);
+        moveToElement(education);
 
         WebElement eventsCalendar = $(By.xpath("//a[contains(text(),'Календарь мероприятий')]"));
         moveAndClick(eventsCalendar);

@@ -14,14 +14,21 @@ public class AnyQACardPage extends AbsBasePage {
 
     public List<String> getInfoThenQuit() {
         List<String> list = new ArrayList<>();
+        String infoStripTemplLocator = "(//p[@class='sc-1og4wiw-0 sc-3cb1l3-0 jQNgtj dgWykw'])[last()-'%s']";
+
+        standardWaiters.waitForElementVisible(By.xpath(String.format(infoStripTemplLocator, "1")));
         String name = $(By.cssSelector(".sc-1og4wiw-0.sc-s2pydo-1.ifZfhS.diGrSa")).getText();
         String description = $(By.cssSelector(".sc-1og4wiw-0.sc-s2pydo-3.gaEufI.dZDxRw")).getText();
-        String duration = $(By.xpath("(//p[@class='sc-1og4wiw-0 sc-3cb1l3-0 jQNgtj dgWykw'])[last()-2]")).getText();
+        String duration = $(By.xpath(String.format(infoStripTemplLocator, "2"))).getText();
+        String format = $(By.xpath(String.format(infoStripTemplLocator, "1"))).getText();
         list.add(name);
         list.add(description);
         list.add(duration);
+        list.add(format);
+
         QACoursesPage qaCoursesPage = new QACoursesPage(driver);
         openPage(qaCoursesPage.getPagePath());
+
         return list;
     }
 }

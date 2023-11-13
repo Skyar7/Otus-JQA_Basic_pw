@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
+import pages.EventsCalendarPage;
 import pages.MainPage;
 import pages.QACoursesPage;
 
@@ -15,13 +16,14 @@ public class InfoDisplay_Test {
     private MainPage mainPage;
     private QACoursesPage qaCoursesPage;
     private HeaderContainerComponent headerContainerComponent;
+    private EventsCalendarPage eventsCalendarPage;
 
     @BeforeEach
     public void startDriver() {
         this.driver = new WebDriverFactory().newDriver();
         mainPage = new MainPage(driver);
         qaCoursesPage = new QACoursesPage(driver);
-        headerContainerComponent = new HeaderContainerComponent(driver);
+        eventsCalendarPage = new EventsCalendarPage(driver);
     }
 
 //    @AfterEach
@@ -47,8 +49,12 @@ public class InfoDisplay_Test {
         log.info("Проверка данных в карточках курса");
         qaCoursesPage.checkCardsInfo();
 
-//        log.info("Переход в календарь мероприятий");
-//        headerContainerComponent.goToEventsCalendar();
+        log.info("Переход в календарь мероприятий");
+        headerContainerComponent = new HeaderContainerComponent(driver);
+        headerContainerComponent.goToEventsCalendar();
+
+        log.info("Проверка даты мероприятия");
+        eventsCalendarPage.datesChecking();
 
     }
 }

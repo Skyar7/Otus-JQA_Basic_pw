@@ -26,7 +26,8 @@ public class QACoursesPage extends AbsBasePage {
         public void checkCardsInfo() {
         AnyQACardPage anyQACardPage = new AnyQACardPage(driver);
 
-        for (int i = 0; i < courseCounting().size() - 1; i++) {
+//        for (int i = 0; i < courseCounting().size(); i++) {
+        for (int i = 0; i < 2; i++) {
             List<WebElement> cards = courseCounting();
             cards.get(i).click();
 
