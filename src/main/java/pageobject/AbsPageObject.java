@@ -1,16 +1,13 @@
 package pageobject;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
-import waiters.StandardWaiters;
+import waiters.Waiters;
 
 public abstract class AbsPageObject extends ElementActions {
-    protected StandardWaiters standardWaiters;
+    protected Waiters waiters;
 
     public AbsPageObject (WebDriver driver) {
         super(driver);
-        this.standardWaiters = new StandardWaiters(driver);
-
-        PageFactory.initElements(driver, this);
+        this.waiters = new Waiters(driver);
     }
 }

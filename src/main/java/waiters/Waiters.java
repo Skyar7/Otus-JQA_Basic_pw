@@ -10,15 +10,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class StandardWaiters {
+public class Waiters {
     private WebDriver driver;
     private int timeoutSec = 5;
 
-    public StandardWaiters(WebDriver driver) {
+    public Waiters(WebDriver driver) {
         this.driver = driver;
     }
 
-    public StandardWaiters(WebDriver driver, int timeoutSec) {
+    public Waiters(WebDriver driver, int timeoutSec) {
         this.driver = driver;
         this.timeoutSec = timeoutSec;
     }
@@ -44,5 +44,9 @@ public class StandardWaiters {
 
     public boolean waitForElementNotvisible(By by) {
         return waitForCondition(ExpectedConditions.invisibilityOfElementLocated(by));
+    }
+
+    public void waitForHeadersElementsLoaded() {
+        this.waitForElementVisible(By.xpath("//button[contains(text(),'Войти')]"));
     }
 }

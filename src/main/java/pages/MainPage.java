@@ -15,6 +15,7 @@ public class MainPage extends AbsBasePage {
     }
 
     public void goToQACourses() {
+        waiters.waitForHeadersElementsLoaded();
         $(By.xpath("(//div[@class='sc-yfk21i-0 jeFZmS'][contains(text(),'Тестирование')])[1]")).click();
     }
 }

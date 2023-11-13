@@ -21,12 +21,9 @@ public class InfoDisplay_Test {
     @BeforeEach
     public void startDriver() {
         this.driver = new WebDriverFactory().newDriver();
-        mainPage = new MainPage(driver);
-        qaCoursesPage = new QACoursesPage(driver);
-        eventsCalendarPage = new EventsCalendarPage(driver);
     }
 
-//    @AfterEach
+    @AfterEach
     public void shutdownDriver() {
         if (this.driver != null) {
             this.driver.close();
@@ -37,24 +34,23 @@ public class InfoDisplay_Test {
     @Test
     public void coursesCardsAndEventsTest() {
 
-        log.info("Открытие сайта");
+        log.info("1. Проверка количества курсов в разделе тестирования.");
+        mainPage = new MainPage(driver);
         mainPage.openPage(mainPage.getPagePath());
-
-        log.info("Переход в раздел тестирование");
         mainPage.goToQACourses();
-
-        log.info("Проверка количества карточек курсов");
+        qaCoursesPage = new QACoursesPage(driver);
         qaCoursesPage.checkCountOfQACourses();
 
-        log.info("Проверка данных в карточках курса");
+        log.info("2. Просмотр карточек курса и проверка данных.");
         qaCoursesPage.checkCardsInfo();
 
-        log.info("Переход в календарь мероприятий");
+        log.info("3. Валидация дат предстоящих мероприятий.");
         headerContainerComponent = new HeaderContainerComponent(driver);
         headerContainerComponent.goToEventsCalendar();
-
-        log.info("Проверка даты мероприятия");
+        eventsCalendarPage = new EventsCalendarPage(driver);
         eventsCalendarPage.datesChecking();
 
+        log.info("4. Просмотр мероприятий по типу.");
+        eventsCalendarPage.checkEventsFilter();
     }
 }

@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnyQACardPage extends AbsBasePage {
+public class CourseCardPage extends AbsBasePage {
 
-    public AnyQACardPage(WebDriver driver) {
+    public CourseCardPage(WebDriver driver) {
         super(driver);
     }
 
@@ -16,7 +16,7 @@ public class AnyQACardPage extends AbsBasePage {
         List<String> list = new ArrayList<>();
         String infoStripTemplLocator = "(//p[@class='sc-1og4wiw-0 sc-3cb1l3-0 jQNgtj dgWykw'])[last()-'%s']";
 
-        standardWaiters.waitForElementVisible(By.xpath(String.format(infoStripTemplLocator, "1")));
+        waiters.waitForElementVisible(By.xpath(String.format(infoStripTemplLocator, "1")));
         String name = $(By.cssSelector(".sc-1og4wiw-0.sc-s2pydo-1.ifZfhS.diGrSa")).getText();
         String description = $(By.cssSelector(".sc-1og4wiw-0.sc-s2pydo-3.gaEufI.dZDxRw")).getText();
         String duration = $(By.xpath(String.format(infoStripTemplLocator, "2"))).getText();
