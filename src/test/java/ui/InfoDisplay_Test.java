@@ -15,12 +15,13 @@ public class InfoDisplay_Test {
     private Logger log = LogManager.getLogger(InfoDisplay_Test.class);
     private MainPage mainPage;
     private QACoursesPage qaCoursesPage;
-    private HeaderContainerComponent headerContainerComponent;
-    private EventsCalendarPage eventsCalendarPage;
+//    private HeaderContainerComponent headerContainerComponent;
+//    private EventsCalendarPage eventsCalendarPage;
 
     @BeforeEach
     public void startDriver() {
         this.driver = new WebDriverFactory().newDriver();
+        mainPage = new MainPage(driver);
     }
 
     @AfterEach
@@ -33,24 +34,40 @@ public class InfoDisplay_Test {
 
     @Test
     public void coursesCardsAndEventsTest() {
-
-        log.info("1. Проверка количества курсов в разделе тестирования.");
-        mainPage = new MainPage(driver);
+        log.info("Проверка количества курсов в разделе тестирования.");
         mainPage.openPage(mainPage.getPagePath());
         mainPage.goToQACourses();
+
         qaCoursesPage = new QACoursesPage(driver);
         qaCoursesPage.checkCountOfQACourses();
+    }
 
-        log.info("2. Просмотр карточек курса и проверка данных.");
+    @Test
+    public void checkCardsTest() {
+        log.info("Просмотр карточек курса и проверка данных.");
+        mainPage.openPage(mainPage.getPagePath());
+        mainPage.goToQACourses();
+
+        qaCoursesPage = new QACoursesPage(driver);
+        qaCoursesPage.checkCountOfQACourses();
         qaCoursesPage.checkCardsInfo();
+    }
 
-        log.info("3. Валидация дат предстоящих мероприятий.");
-        headerContainerComponent = new HeaderContainerComponent(driver);
-        headerContainerComponent.goToEventsCalendar();
-        eventsCalendarPage = new EventsCalendarPage(driver);
-        eventsCalendarPage.datesChecking();
+    @Test
+    public void eventsDatesValidationTest() {
+        log.info("Валидация дат предстоящих мероприятий.");
+        mainPage.openPage(mainPage.getPagePath());
 
-        log.info("4. Просмотр мероприятий по типу.");
-        eventsCalendarPage.checkEventsFilter();
+        new HeaderContainerComponent(driver).goToEventsCalendar();
+        new EventsCalendarPage(driver).datesChecking();
+    }
+
+    @Test
+    public void eventsFiltrationTest() {
+        log.info("Просмотр мероприятий по типу.");
+        mainPage.openPage(mainPage.getPagePath());
+
+        new HeaderContainerComponent(driver).goToEventsCalendar();
+        new EventsCalendarPage(driver).checkEventsFilter();
     }
 }
