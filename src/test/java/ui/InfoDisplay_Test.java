@@ -15,8 +15,6 @@ public class InfoDisplay_Test {
     private Logger log = LogManager.getLogger(InfoDisplay_Test.class);
     private MainPage mainPage;
     private QACoursesPage qaCoursesPage;
-//    private HeaderContainerComponent headerContainerComponent;
-//    private EventsCalendarPage eventsCalendarPage;
 
     @BeforeEach
     public void startDriver() {
