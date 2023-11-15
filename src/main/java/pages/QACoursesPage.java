@@ -22,7 +22,7 @@ public class QACoursesPage extends AbsBasePage {
         Assertions.assertEquals(10, courseCounting().size());
     }
 
-        public void checkCardsInfo() {
+    public void checkCardsInfo() {
         CourseCardPage courseCardPage = new CourseCardPage(driver);
 
         for (int i = 0; i < courseCounting().size(); i++) {
