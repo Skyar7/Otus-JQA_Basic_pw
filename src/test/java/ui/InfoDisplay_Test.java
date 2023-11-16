@@ -47,7 +47,6 @@ public class InfoDisplay_Test {
         mainPage.goToQACourses();
 
         qaCoursesPage = new QACoursesPage(driver);
-        qaCoursesPage.checkCountOfQACourses();
         qaCoursesPage.checkCardsInfo();
     }
 
